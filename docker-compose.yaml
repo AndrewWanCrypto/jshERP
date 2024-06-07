@@ -23,7 +23,7 @@ services:
       - erp
     volumes:
       - "mysqldata:/var/lib/mysql"
-      - "jshERP-boot/docs/jsh_erp.sql:/docker-entrypoint-initdb.d/jsh_erp.sql"
+      - "./docs/jsh_erp.sql:/docker-entrypoint-initdb.d/jsh_erp.sql"
     environment:
       - "MYSQL_DATABASE=jsp_erp"
       - "MYSQL_ROOT_PASSWORD=LigtepK.7N"
@@ -42,7 +42,7 @@ services:
     networks:
       - erp
     ports:
-      - 20001:8080
+      - 9999:9999
     depends_on:
       - mysql
       - redis
@@ -58,7 +58,7 @@ services:
     depends_on:
       - app
     ports:
-      - 20002:8081
+      - 80:80
     restart: on-failure
 
 volumes:
