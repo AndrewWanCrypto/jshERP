@@ -1,7 +1,7 @@
 version: "3.8"
 
 services:
-  redis: # redis 服务
+  redis:
     image: redis:6.2.1
     container_name: redis --requirepass LigtepK.7N
     ports:
@@ -35,8 +35,8 @@ services:
 
   app:
     build:
-      context: app
-      dockerfile: jshERP-boot/Dockerfile
+      context: jshERP-boot
+      dockerfile: Dockerfile
     container_name: app
     networks:
       - erp
@@ -49,8 +49,8 @@ services:
 
   web:
     build:
-      context: web
-      dockerfile: jshERP-web/Dockerfile
+      context: jsERP-web
+      dockerfile: Dockerfile
     container_name: web
     networks:
       - erp
