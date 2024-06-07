@@ -1,0 +1,68 @@
+version: "3.8"
+
+services:
+  redis: # redis 服务
+    image: redis:6.2.1
+    container_name: redis --requirepass LigtepK.7N
+    ports:
+      - 6379:6379
+    networks:
+      - erp
+    restart: always
+    volumes:
+      - "redisdata:/data"
+    environment:
+      TZ: Asia/Shanghai
+      REDIS_PASSWORD: "LigtepK.7N"
+  mysql:
+    image: mysql:5.7.33
+    container_name: mysql
+    ports:
+      - 3306:3306
+    networks:
+      - erp
+    volumes:
+      - "mysqldata:/var/lib/mysql"
+    environment:
+      - "MYSQL_DATABASE=jsp_erp"
+      - "MYSQL_ROOT_PASSWORD=LigtepK.7N"
+      - "TZ=Asia/Shanghai"
+    command:
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_general_ci
+      --lower_case_table_names=1
+      --default-time-zone=+8:00
+
+  app:
+    build:
+      context: app
+      dockerfile: jshERP-boot/Dockerfile
+    container_name: app
+    networks:
+      - erp
+    ports:
+      - 20001:8080
+    depends_on:
+      - mysql
+      - redis
+    restart: on-failure
+
+  web:
+    build:
+      context: web
+      dockerfile: jshERP-web/Dockerfile
+    container_name: web
+    networks:
+      - erp
+    depends_on:
+      - app
+    ports:
+      - 20002:8081
+    restart: on-failure
+
+volumes:
+  mysqldata:
+  redisdata:
+
+networks:
+  erp:
