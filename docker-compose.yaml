@@ -3,7 +3,7 @@ version: "3.8"
 services:
   redis:
     image: redis:6.2.1
-    container_name: redis --requirepass LigtepK.7N
+    container_name: redis
     ports:
       - 6379:6379
     networks:
@@ -23,6 +23,7 @@ services:
       - erp
     volumes:
       - "mysqldata:/var/lib/mysql"
+      - "jshERP-boot/docs/jsh_erp.sql:/docker-entrypoint-initdb.d/jsh_erp.sql"
     environment:
       - "MYSQL_DATABASE=jsp_erp"
       - "MYSQL_ROOT_PASSWORD=LigtepK.7N"
