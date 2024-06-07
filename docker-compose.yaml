@@ -49,7 +49,7 @@ services:
 
   web:
     build:
-      context: jsERP-web
+      context: jshERP-web
       dockerfile: Dockerfile
     container_name: web
     networks:
