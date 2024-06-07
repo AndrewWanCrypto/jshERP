@@ -12,6 +12,8 @@ WORKDIR /app
 
 COPY --from=builder /app/target/jshERP.jar /app/app.jar
 
+ENV JAVA_OPTS="-Djava.awt.headless=true"
+
 EXPOSE 9999
 
-CMD ["java", "-jar", "app.jar"]
+CMD ["sh", "-c", "java $JAVA_OPTS -jar app.jar"]

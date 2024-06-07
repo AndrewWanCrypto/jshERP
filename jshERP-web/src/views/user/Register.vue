@@ -40,7 +40,7 @@
             <a-input
               size="large"
               type="text"
-              default-value="12345"
+              default-value=""
               placeholder="请输入验证码">
               <a-icon slot="prefix" type="smile" :style="{ color: 'rgba(0,0,0,.25)' }"/>
             </a-input>
