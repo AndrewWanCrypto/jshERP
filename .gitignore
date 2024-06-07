@@ -6,5 +6,5 @@
 **/target
 **/logs
 
-## front
-**/*.lock
+# ## front
+# **/*.lock

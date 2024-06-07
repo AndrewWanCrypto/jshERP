@@ -5,7 +5,8 @@ WORKDIR /app
 COPY package*.json ./
 COPY . .
 RUN yarn install \
-    && yarn build
+    && yarn build \
+    && ls public/*
 
 FROM nginx:1.12.2-alpine
 
