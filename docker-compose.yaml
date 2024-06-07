@@ -23,9 +23,9 @@ services:
       - erp
     volumes:
       - "mysqldata:/var/lib/mysql"
-      - "./docs/jsh_erp.sql:/docker-entrypoint-initdb.d/jsh_erp.sql"
+      - "./jshERP-boot/docs/jsh_erp.sql:/docker-entrypoint-initdb.d/jsh_erp.sql"
     environment:
-      - "MYSQL_DATABASE=jsp_erp"
+      - "MYSQL_DATABASE=jsh_erp"
       - "MYSQL_ROOT_PASSWORD=LigtepK.7N"
       - "TZ=Asia/Shanghai"
     command:
