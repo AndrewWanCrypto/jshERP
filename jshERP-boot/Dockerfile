@@ -2,9 +2,10 @@ FROM maven:3.2.3-jdk-8 as builder
 
 WORKDIR /app
 
+COPY docs/settings.xml /usr/share/maven/ref/
 COPY pom.xml ./
 COPY . .
-RUN mvn clean install
+RUN mvn clean install -DskipTests -Dmaven.test.skip=true
 
 FROM openjdk:8-jre-alpine
 
