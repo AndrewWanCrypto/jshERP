@@ -4,8 +4,8 @@ WORKDIR /app
 
 COPY package*.json ./
 COPY . .
-RUN export NODE_OPTIONS=--openssl-legacy-provider \
-    && yarn install \
+ENV NODE_OPTIONS=--openssl-legacy-provider
+RUN yarn install \
     && yarn build
 
 FROM nginx:1.12.2-alpine
