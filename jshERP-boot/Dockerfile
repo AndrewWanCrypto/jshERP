@@ -2,15 +2,15 @@ FROM maven:3.2.3-jdk-8 as builder
 
 WORKDIR /app
 
-# COPY sources.list /etc/apt/sources.list
-# COPY settings.xml /usr/share/maven/ref/
 COPY pom.xml ./
 COPY . .
 RUN mvn clean install -DskipTests -Dmaven.test.skip=true
 
-FROM openjdk:8-jre-alpine
+FROM openjdk:8u201-jre-alpine3.9
 
 WORKDIR /app
+
+RUN apk --no-cache add ttf-dejavu fontconfig
 
 COPY --from=builder /app/target/jshERP.jar /app/app.jar
 

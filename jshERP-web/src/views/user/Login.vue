@@ -114,7 +114,7 @@
           password:{rules: [{ required: true, message: '请输入密码!',validator: 'click'}]}
         },
         verifiedCode:"",
-        inputCodeContent:"1234", //20200510 cfm: 为方便测试，不输入验证码可 ""-->"xxxx"
+        inputCodeContent:"", //20200510 cfm: 为方便测试，不输入验证码可 ""-->"xxxx"
         inputCodeNull:true,
         departList:[],
         departVisible:false,
