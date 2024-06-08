@@ -10,6 +10,8 @@ RUN yarn install \
 
 FROM nginx:1.12.2-alpine
 
+ENV LANG=zh_CN.UTF-8
+
 COPY --from=builder /app/dist /usr/share/nginx/html
 COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
 
